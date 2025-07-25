@@ -20,7 +20,7 @@
   "scripts": {
     "cf-typegen": "wrangler types",
     "deploy": "wrangler deploy",
-    "dev": "pnpm seedLocalDb && wrangler dev",
+    "dev": "bun run seedLocalDb && wrangler dev",
     "predeploy": "wrangler d1 migrations apply DB --remote",
     "seedLocalDb": "wrangler d1 migrations apply DB --local",
     "schema": "npx chanfana",

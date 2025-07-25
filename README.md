@@ -13,7 +13,7 @@ This is an example project made to be used as a quick start into building OpenAP
 
 This template includes various endpoints, a D1 database, and integration tests using [Vitest](https://vitest.dev/) as examples. In endpoints, you will find [chanfana D1 AutoEndpoints](https://chanfana.com/endpoints/auto/d1) and a [normal endpoint](https://chanfana.com/endpoints/defining-endpoints) to serve as examples for your projects.
 
-Besides being able to see the OpenAPI schema (openapi.json) in the browser, you can also extract the schema locally no hassle by running this command `npm run schema`.
+Besides being able to see the OpenAPI schema (openapi.json) in the browser, you can also extract the schema locally no hassle by running this command `bun run schema`.
 
 <!-- dash-content-end -->
 
@@ -25,16 +25,16 @@ Besides being able to see the OpenAPI schema (openapi.json) in the browser, you 
 Outside of this repo, you can start a new project with this template using [C3](https://developers.cloudflare.com/pages/get-started/c3/) (the `create-cloudflare` CLI):
 
 ```bash
-npm create cloudflare@latest -- --template=cloudflare/templates/openapi-template
+bun create cloudflare@latest -- --template=cloudflare/templates/openapi-template
 ```
 
 A live public deployment of this template is available at [https://openapi-template.templates.workers.dev](https://openapi-template.templates.workers.dev)
 
 ## Setup Steps
 
-1. Install the project dependencies with a package manager of your choice:
+1. Install the project dependencies:
    ```bash
-   npm install
+   bun install
    ```
 2. Create a [D1 database](https://developers.cloudflare.com/d1/get-started/) with the name "openapi-template-db":
    ```bash
@@ -55,7 +55,7 @@ A live public deployment of this template is available at [https://openapi-templ
 This template includes integration tests using [Vitest](https://vitest.dev/). To run the tests locally:
 
 ```bash
-npm run test
+bun run test
 ```
 
 Test files are located in the `tests/` directory, with examples demonstrating how to test your endpoints and database interactions.

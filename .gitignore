@@ -1,0 +1,12 @@
+// extensions
+node_modules/
+.wrangler/
+
+// build
+dist/
+
+// vim buffers
+*.swp
+
+// env
+.dev.vars
