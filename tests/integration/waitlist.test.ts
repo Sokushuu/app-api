@@ -100,4 +100,45 @@ describe("Waitlist endpoint", () => {
     expect(data.success).toBe(false);
     expect(data.errors).toBeDefined();
   });
+
+  it("should return 0 for empty waitlist count", async () => {
+    const response = await SELF.fetch("http://local.test/waitlist/count", {
+      method: "GET",
+    });
+
+    expect(response.status).toBe(200);
+    const data = await response.json();
+    expect(data.success).toBe(true);
+    expect(typeof data.count).toBe("number");
+    expect(data.count).toBeGreaterThanOrEqual(0);
+  });
+
+  it("should return correct count after adding emails", async () => {
+    // Get initial count
+    const initialResponse = await SELF.fetch("http://local.test/waitlist/count", {
+      method: "GET",
+    });
+    const initialData = await initialResponse.json();
+    const initialCount = initialData.count;
+
+    // Add a new email
+    const email = `count-test-${Date.now()}@example.com`;
+    await SELF.fetch("http://local.test/waitlist", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
+
+    // Check count increased
+    const finalResponse = await SELF.fetch("http://local.test/waitlist/count", {
+      method: "GET",
+    });
+    const finalData = await finalResponse.json();
+    
+    expect(finalResponse.status).toBe(200);
+    expect(finalData.success).toBe(true);
+    expect(finalData.count).toBe(initialCount + 1);
+  });
 });
