@@ -1,9 +1,7 @@
 import { ApiException, fromHono } from "chanfana";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
-import { tasksRouter } from "./endpoints/tasks/router";
 import { ContentfulStatusCode } from "hono/utils/http-status";
-import { DummyEndpoint } from "./endpoints/dummyEndpoint";
 import { WaitlistEndpoint } from "./endpoints/waitlistEndpoint";
 import { WaitlistCountEndpoint } from "./endpoints/waitlistCountEndpoint";
 import { ConfigLaunchDateEndpoint } from "./endpoints/configLaunchDateEndpoint";
@@ -67,18 +65,14 @@ const openapi = fromHono(app, {
   docs_url: "/",
   schema: {
     info: {
-      title: "My Awesome API",
-      version: "2.0.0",
-      description: "This is the documentation for my awesome API.",
+      title: "Sokushuu API",
+      version: "1.0.0",
+      description: "Sokushuu waitlist and configuration API for the learning platform launch.",
     },
   },
 });
 
-// Register Tasks Sub router
-openapi.route("/tasks", tasksRouter);
-
-// Register other endpoints
-openapi.post("/dummy/:slug", DummyEndpoint);
+// Register API endpoints
 openapi.post("/waitlist", WaitlistEndpoint);
 openapi.get("/waitlist/count", WaitlistCountEndpoint);
 openapi.get("/config/launch-date", ConfigLaunchDateEndpoint);
