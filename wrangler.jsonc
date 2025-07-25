@@ -1,0 +1,16 @@
+{
+  "compatibility_date": "2025-04-01",
+  "main": "src/index.ts",
+  "name": "app-api",
+  "upload_source_maps": true,
+  "observability": {
+    "enabled": true
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "sokushuu-app-db",
+      "database_id": "ed666f6d-4da4-461a-9ab9-fff278e3963a"
+    }
+  ]
+}
