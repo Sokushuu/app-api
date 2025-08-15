@@ -5,6 +5,8 @@ import { ContentfulStatusCode } from "hono/utils/http-status";
 import { WaitlistEndpoint } from "./endpoints/waitlistEndpoint";
 import { WaitlistCountEndpoint } from "./endpoints/waitlistCountEndpoint";
 import { ConfigLaunchDateEndpoint } from "./endpoints/configLaunchDateEndpoint";
+import { AuthLoginEndpoint } from "./endpoints/authLoginEndpoint";
+import { AuthVerifyEndpoint } from "./endpoints/authVerifyEndpoint";
 
 // Start a Hono app
 const app = new Hono<{ Bindings: Env }>();
@@ -76,6 +78,8 @@ const openapi = fromHono(app, {
 openapi.post("/waitlist", WaitlistEndpoint);
 openapi.get("/waitlist/count", WaitlistCountEndpoint);
 openapi.get("/config/launch-date", ConfigLaunchDateEndpoint);
+openapi.post("/auth/login", AuthLoginEndpoint);
+openapi.post("/auth/verify", AuthVerifyEndpoint);
 
 // Export the Hono app
 export default app;
